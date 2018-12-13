@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wgoat-pd-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wgoat-pd-app
+  template:
+    metadata:
+      labels:
+        app: wgoat-pd-app
+    spec:
+      containers:
+      - name: wgoat-pd-con
+        image: webgoat/webgoat-8.0 
+        ports:
+        - containerPort: 8080
