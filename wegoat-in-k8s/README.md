@@ -52,5 +52,5 @@ minikube ip
 http://192.168.99.100/WebGoat/
 ```
 
-#References
+# References
 https://kubernetes.io/docs/setup/minikube/
