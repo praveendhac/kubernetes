@@ -1,4 +1,4 @@
-# WebGoat in Kubernetes (inikube) Cluster
+# WebGoat in Kubernetes (minikube) Cluster
 # Minikube
 Start minikube
 ```
@@ -52,6 +52,7 @@ kubectl get ingress,svc --all-namespaces
 minikube ip
 http://192.168.99.100/WebGoat/
 ```
+URL is case sensitive
 
 # References
 https://kubernetes.io/docs/setup/minikube/
