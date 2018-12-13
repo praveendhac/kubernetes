@@ -30,7 +30,7 @@ Enable ingress add-on
 minikube addons enable ingress
 ```
 
-For fresh minikube install
+#Fresh minikube install (MacOS)
 ```
 minikube delete
 brew cask uninstall minikube
@@ -39,13 +39,18 @@ rm -rf ~/.minikube
 brew cask install minikube
 ```
 
-Deploy webgoat (any k8s cluster)
+#Deploy webgoat (any k8s cluster)
 ```
 kubectl create -f deployment_wgoat.yaml 
 kubectl create -f svc-wgoat.yaml 
 kubectl create -f ingress-wgoat.yaml 
 kubectl get ingress,svc --all-namespaces
 ```
+#Access WebGoat
+```
+minikube ip
+http://192.168.99.100/WebGoat/
+```
 
-References
+#References
 https://kubernetes.io/docs/setup/minikube/
