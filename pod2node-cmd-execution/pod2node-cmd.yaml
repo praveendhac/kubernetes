@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: pod2node-cmd
+  namespace: pd-test 
+spec:
+  revisionHistoryLimit: 10
+  template:
+    metadata:
+      labels:
+        tier: node
+    spec:
+      containers:
+      - command:
+        - /bin/sh
+        - -c
+        - --
+        - while true; do hostname; hostname -I; date; sleep 30; done;
+        image: ubuntu 
+        imagePullPolicy: IfNotPresent
+        name: pod2node-cmd
+        resources:
+          requests:
+            cpu: 100m
+        securityContext:
+          privileged: true
+          procMount: Default
+        terminationMessagePath: /dev/pd-termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      hostNetwork: true
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  templateGeneration: 191
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
