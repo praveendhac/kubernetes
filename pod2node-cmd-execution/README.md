@@ -7,6 +7,7 @@ $ kubectl create ns pd-test
 $ kubectl apply -f pod2node-cmd.yaml 
 ```
 
+## Cluster Nodes
 Get list of nodes in the cluster
 ```
 $ kubectl get nodes -o wide
@@ -16,6 +17,7 @@ aks-nodepool1-36165035-6   Ready    agent   60d   v1.12.8   10.240.0.10   <none>
 aks-nodepool1-36165035-7   Ready    agent   60d   v1.12.8   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1049-azure   docker://3.0.4
 ```
 
+## DaemonSet & Pod List
 Get DaemonSet and running Pod details, we can see Pod is scheduled on each node
 ```
 $ kubectl get ds -n pd-test
@@ -29,6 +31,7 @@ pd-test     pod2node-cmd-mwl5d        1/1     Running            0          110s
 pd-test     pod2node-cmd-prwzn        1/1     Running            0          110s   10.240.0.8     aks-nodepool1-36165035-5   <none>
 ```
 
+## Pod Shell
 Get shell of the Pod
 ```
 $ kubectl exec -it pod2node-cmd-8grxj -n pd-test -- sh
@@ -44,4 +47,4 @@ root@aks-nodepool1-36165035-7:/# pwd
 root@aks-nodepool1-36165035-7:/#
 ```
 
-When we add used using `adduser` command from Pod, the user is not reflected on the Node/VM, not sure how kube-proxy executes `iptables` command each time when there is change in service or associated backends.
+When we add user using `adduser` command from Pod, user is not reflected on the Node/VM, not sure how kube-proxy executes `iptables` command each time when there is change in service or associated backends.
