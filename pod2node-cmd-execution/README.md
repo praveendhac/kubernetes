@@ -46,5 +46,7 @@ root@aks-nodepool1-36165035-7:/# pwd
 /
 root@aks-nodepool1-36165035-7:/#
 ```
+## Azure Portal
+![alt text](images/azure-vm-cmd-exec.png?raw=true "Commands executed on VM from Azure Portal")
 
 When we add user using `adduser` command from Pod, user is not reflected on the Node/VM, not sure how kube-proxy executes `iptables` command each time when there is change in service or associated backends.
